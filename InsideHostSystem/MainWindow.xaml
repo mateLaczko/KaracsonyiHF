@@ -1,0 +1,28 @@
+﻿<Window x:Class="InsideHostSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsideHostSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="900">
+    <Grid>
+        <GridSplitter HorizontalAlignment="Left" Height="424" Margin="454,27,0,0" VerticalAlignment="Top" Width="4" Background="#FFD7D7D7"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,27,0,0" TextWrapping="Wrap" Text="Regisztráció" VerticalAlignment="Top" Height="74" Width="262" FontSize="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="480,27,0,0" TextWrapping="Wrap" Text="LogIn" VerticalAlignment="Top" Height="74" Width="262" FontSize="48"/>
+        <TextBox x:Name="regName" HorizontalAlignment="Left" Height="32" Margin="211,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderBrush="#FF747474" Background="#FFB1F9E8" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.383" Height="32" Width="156" FontSize="22"><Run Text="Felhasználónév"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="116,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.383" Height="32" Width="68" FontSize="22" Text="Jelszó:"/>
+        <TextBlock HorizontalAlignment="Left" Margin="480,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.383" Height="32" Width="156" FontSize="22"><Run Text="Felhasználónév"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="logName" HorizontalAlignment="Left" Height="32" Margin="661,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderBrush="#FF747474" Background="#FFB1F9E8" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="568,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.383" Height="32" Width="68" FontSize="22" Text="Jelszó:"/>
+        <PasswordBox x:Name="regPass" HorizontalAlignment="Left" Margin="211,235,0,0" VerticalAlignment="Top" Width="211" Height="32" BorderBrush="#FF838383" Background="#FFAFF9DD" FontSize="18"/>
+        <PasswordBox x:Name="logPass" HorizontalAlignment="Left" Margin="661,235,0,0" VerticalAlignment="Top" Width="211" Height="32" BorderBrush="#FF838383" Background="#FFAFF9DD" FontSize="18"/>
+        <CheckBox x:Name="regCheckBox" Content="A használati feltételeket &#xD;&#xA;elfogadom" HorizontalAlignment="Left" Margin="249,310,0,0" VerticalAlignment="Top" Height="46" Width="173" FontSize="14"/>
+        <Button x:Name="regButton" Content="Regisztrálok" HorizontalAlignment="Left" Margin="249,378,0,0" VerticalAlignment="Top" Width="134" Height="43" Background="#FFA5F7EA" Foreground="#FFAE9595" FontSize="22" Click="regButton_Click"/>
+        <Button x:Name="logButton" Content="Belépek" HorizontalAlignment="Left" Margin="700,378,0,0" VerticalAlignment="Top" Width="134" Height="43" Background="#FFA5F7EA" Foreground="#FFAE9595" FontSize="22" Click="logButton_Click"/>
+        <TextBlock x:Name="regFeedBack" HorizontalAlignment="Left" Margin="28,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="394"/>
+        <TextBlock x:Name="logFeedBack" HorizontalAlignment="Left" Margin="478,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="394"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,17 @@
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\bin\Debug\InsideHostSystem.exe.config
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\bin\Debug\InsideHostSystem.exe
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\bin\Debug\InsideHostSystem.pdb
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.csprojResolveAssemblyReference.cache
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\MainWindow.g.cs
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\App.g.cs
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem_MarkupCompile.cache
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem_MarkupCompile.lref
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\MainWindow.baml
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.g.resources
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.Properties.Resources.resources
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.csproj.GenerateResource.Cache
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.csproj.CoreCompileInputs.cache
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.exe
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\InsideHostSystem.pdb
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\MemberProfile.g.cs
+D:\c#\InsideHost\InsideHostSystem\InsideHostSystem\obj\Debug\MemberProfile.baml
