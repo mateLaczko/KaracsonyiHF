@@ -1,0 +1,6 @@
+Gondoltam legyen egy ilyen ahova bárki beírhatja h milyen ötletei vannak vagy hgy melyik részben mit csinált, ha van rá szükség:)
+
+Ami szerintem (Máté) király lenne:
+
+- Rakni egy plusz gombot a MemberProfilba amivel a memberek le tudják tiltani egymást, aminek hatására neki nem tud az a member üzenetet 
+küldeni és ezt mondjuk egy másfalyta üzenet jelzi a blokkolt member felé.
