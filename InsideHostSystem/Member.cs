@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace InsideHostSystem
 {
-    public class Member : IMember
+    public class Member
     {
         public static List<Member> AllMembers { get; set; }
 
