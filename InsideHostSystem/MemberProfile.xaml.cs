@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace InsideHostSystem
             FuggoFelkeresek(Member);
             NewMessage(Member);
         }
-        
+
         //INDULÓ ÁLLAPOT KIALAKÍTÁSA
 
         //Az ismerősök legördülőt tölti fel
@@ -54,7 +55,7 @@ namespace InsideHostSystem
             NotContacted.Items.Clear();
             foreach (var item in Member.AllMembers)
             {
-                if(!Member.Contacts.Contains(item) && item.Name != Member.Name)
+                if (!Member.Contacts.Contains(item) && item.Name != Member.Name)
                     NotContacted.Items.Add(item.Name);
             }
         }
@@ -73,12 +74,12 @@ namespace InsideHostSystem
         //Üzenetküldés
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageContent.Text == "")
+            if (MessageContent.Text == "")
             {
                 MessageBox.Show("Üres üzenetet nem lehet küldeni!");
                 return;
             }
-            if(MailTo.Text == "")
+            if (MailTo.Text == "")
             {
                 MessageBox.Show("A címzett megadása kötelező!");
                 return;
@@ -86,10 +87,10 @@ namespace InsideHostSystem
 
             foreach (var tomember in Member.Contacts)
             {
-                if(tomember.Name == MailTo.Text)
+                if (tomember.Name == MailTo.Text)
                 {
                     tomember.Messages.Push(new Message(Member, DateTime.Now, MessageCoder(MessageContent.Text)));
-                    if(tomember.LogedIn == true)
+                    if (tomember.LogedIn == true)
                     {
                         MemberProfile to = AllProfiles.Where(p => p.Member == tomember).First();
                         to.MessageContent.Text = "Olvasatlan üzenetei vannak!";
@@ -104,7 +105,7 @@ namespace InsideHostSystem
         private void Unseen_Click(object sender, RoutedEventArgs e)
         {
             List<Message> query = Member.Messages.Where(m => m.Seen == false).ToList();
-            if(query != null)
+            if (query != null)
             {
                 foreach (var item in query)
                 {
@@ -207,7 +208,7 @@ namespace InsideHostSystem
         //Ez fut le a Felkérések gomb megnyomásakor
         private void Requests_Click(object sender, RoutedEventArgs e)
         {
-            if(Member.Requests.Count != 0)
+            if (Member.Requests.Count != 0)
             {
                 foreach (var member in Member.Requests)
                 {
@@ -216,8 +217,8 @@ namespace InsideHostSystem
                     {
                         Member.Contacts.Add(member);
                         member.Contacts.Add(Member);
-                            //Innentől a profilokat aktualizálja vagyis kiveszi az ismerhetem boxból és átteszi az ismerősök közé minkét 
-                            //oldalon a másikat
+                        //Innentől a profilokat aktualizálja vagyis kiveszi az ismerhetem boxból és átteszi az ismerősök közé minkét 
+                        //oldalon a másikat
                         MemberProfile to = AllProfiles.Where(p => p.Member == member).First();
                         to.ShowContacts();
                         ShowContacts();
@@ -243,11 +244,34 @@ namespace InsideHostSystem
         //Probálkozások
         private void Kiiro()
         {
-            if(Member.Messages.Count != 0)
+            if (Member.Messages.Count != 0)
             {
                 foreach (var item in Member.Messages)
                 {
                     EventsFromOP.Text += item.Content;
+                }
+            }
+        }
+
+        private void archButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (StreamWriter writer =
+            new StreamWriter($"{Member.Name}_archive.txt"))
+            {
+                writer.WriteLine($"Adatok: {Member.Name}");
+                writer.WriteLine("-------------------------");
+                writer.WriteLine("Kontaktok: ");
+                foreach (var item in Member.Contacts)
+                {
+                    writer.WriteLine($"{item.Name}");
+                }
+                writer.WriteLine("-------------------------");
+                writer.WriteLine("Üzenetek:");
+                foreach (var item in Member.Messages)
+                {
+                    writer.WriteLine($"Feladó: {item.From.Name}");
+                    writer.WriteLine($"{MessageDecoder(item.Content)}");
+                    writer.WriteLine(item.Date);
                 }
             }
         }

@@ -36,5 +36,6 @@
         <Button x:Name="AllMessages" Content="Összes üzenetem" Grid.Column="1" HorizontalAlignment="Left" Margin="177.8,109,0,0" VerticalAlignment="Top" Width="182" Height="33" FontSize="18" Click="AllMessages_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="35.8,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="105" FontSize="24" Grid.Column="1"><Run Text="Üzenet"/><Run Text="ek"/></TextBlock>
         <TextBlock x:Name="EventsFromOP" HorizontalAlignment="Left" Margin="261,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="442" Width="299" Background="#FFBCFFF4"/>
+        <Button x:Name="archButton" Content="Profil archiválása" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Grid.Column="1" Margin="177.8,53,0,0" Height="32" Click="archButton_Click"/>
     </Grid>
 </Window>
