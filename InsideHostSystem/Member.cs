@@ -20,9 +20,10 @@ namespace InsideHostSystem
 
         static Member()
         {
-            AllMembers = new List<Member>();
+            /*Már nem kell, mert a MainWindow konstruktorában feltöltöm az adatbázisból*/
+            // AllMembers = new List<Member>();
         }
-    
+
         public Member(string name, string pass)
         {
             Name = name;

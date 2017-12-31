@@ -17,9 +17,11 @@ namespace InsideHostSystem
 {
     public partial class MainWindow : Window
     {
+        DBConnect dBConnect = new DBConnect();
         public MainWindow()
         {
             InitializeComponent();
+            Member.AllMembers = dBConnect.ListMembers(dBConnect.BuildSelectQuery());
         }
 
         private void regButton_Click(object sender, RoutedEventArgs e)
@@ -54,6 +56,8 @@ namespace InsideHostSystem
                         
                 }
                 Member.AllMembers.Add(new Member(name, SecurePass(pass))); //Itt kerül bele a Member az AllMembers static Listbe és itt titkosítom a jelszavát
+                dBConnect.Insert(dBConnect.BuildInsertQuery("Member", name, SecurePass(pass)));
+
                 regFeedBack.Text = "Sikeres Regisztráció! Most már be tudsz jelentkezni!";
                 regName.Text = "";
                 regPass.Password = "";

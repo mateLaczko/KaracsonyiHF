@@ -16,6 +16,7 @@ namespace InsideHostSystem
 {
     public partial class MemberProfile : Window
     {
+        DBConnect dBConnect = new DBConnect();
         public Member Member { get; set; }
         public static List<MemberProfile> AllProfiles { get; set; }
 
@@ -31,6 +32,10 @@ namespace InsideHostSystem
             InitializeComponent();
             Member.LogedIn = true;
             MemberName.Text = Member.Name;
+            Member.Contacts = dBConnect.ListMembers(dBConnect.BuildSelectQuery(Member.Name, 1));
+            Member.Requests = dBConnect.ListMembers(dBConnect.BuildSelectQuery(Member.Name, 0));
+            Member.Messages = dBConnect.ListMessages(dBConnect.BuildSelectQuery(Member.Name));
+            MailToList();
             ShowContacts();
             ShowNotContactedYet();
             FuggoFelkeresek(Member);
@@ -54,7 +59,7 @@ namespace InsideHostSystem
             NotContacted.Items.Clear();
             foreach (var item in Member.AllMembers)
             {
-                if(!Member.Contacts.Contains(item) && item.Name != Member.Name)
+                if(!Contacts.Items.Contains(item.Name) && item.Name != Member.Name)
                     NotContacted.Items.Add(item.Name);
             }
         }
@@ -94,6 +99,7 @@ namespace InsideHostSystem
                         MemberProfile to = AllProfiles.Where(p => p.Member == tomember).First();
                         to.MessageContent.Text = "Olvasatlan üzenetei vannak!";
                     }
+                    dBConnect.Insert(dBConnect.BuildInsertQuery("Message", DateTime.Now, this.Member.Name, MailTo.Text, MessageCoder(MessageContent.Text)));
                     MessageContent.Text = "";
                     MailTo.Text = "";
                     return;
@@ -110,6 +116,7 @@ namespace InsideHostSystem
                 {
                     MessageBox.Show($"{item.From.Name}\n{item.Date}\n\n{MessageDecoder(item.Content)}");
                     item.Seen = true;
+                    dBConnect.Update(dBConnect.BuildUpdateQuery("Message", item.Date, item.From.Name, this.Member.Name, item.Content));
                 }
                 MessageContent.Text = "";
             }
@@ -193,6 +200,7 @@ namespace InsideHostSystem
                     }
 
                     member.Requests.Add(Member);//ha nincs bejelentkezve, amikor bejelentkezik lefut a FuggoFelkeresek(önmaga)
+                    dBConnect.Insert(dBConnect.BuildInsertQuery("Connections", 0, Member.Name, NotContacted.Text));
                     NotContacted.Text = "";
                     if (member.LogedIn == true)//ha be van jelentkezve
                     {
@@ -216,8 +224,10 @@ namespace InsideHostSystem
                     {
                         Member.Contacts.Add(member);
                         member.Contacts.Add(Member);
-                            //Innentől a profilokat aktualizálja vagyis kiveszi az ismerhetem boxból és átteszi az ismerősök közé minkét 
-                            //oldalon a másikat
+                        dBConnect.Insert(dBConnect.BuildInsertQuery("Connections", 1, Member.Name, member.Name));
+                        dBConnect.Update(dBConnect.BuildUpdateQuery("Connections", Member.Name, member.Name));
+                        //Innentől a profilokat aktualizálja vagyis kiveszi az ismerhetem boxból és átteszi az ismerősök közé minkét 
+                        //oldalon a másikat
                         MemberProfile to = AllProfiles.Where(p => p.Member == member).First();
                         to.ShowContacts();
                         ShowContacts();
@@ -247,7 +257,7 @@ namespace InsideHostSystem
             {
                 foreach (var item in Member.Messages)
                 {
-                    EventsFromOP.Text += item.Content;
+                    EventsFromOP.Text +=MessageDecoder(item.Content);
                 }
             }
         }
